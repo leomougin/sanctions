@@ -11,5 +11,7 @@ switch ($route) {
         $accueilController = new AccueilController();
         $accueilController->accueil();
         break;
-
+    case 'mentionlegales':
+        $mentionLegalesController = new MentionLegalesController();
+        $mentionLegalesController->mentionLegales();
 }

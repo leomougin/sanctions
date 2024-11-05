@@ -1,5 +1,5 @@
 
-<footer class="bg-secondary d-flex flex-wrap justify-content-between align-items-center py-3  border-top fixed-bottom">
+<footer class="bg-secondary d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
     <div class="container text-center text-black ">
         &copy; 2024 Lycée Gaudper - Gestion des Sanctions
     </div>
@@ -21,7 +21,7 @@
         <a href="#">Nous contacter</a>
     </div>
     <div id="mention" class="container text-center ">
-        <a href="#">Mention légal</a>
+        <a href="?route=mentionlegales">Mention légales</a>
     </div>
     <style>
         #reseau a, a {

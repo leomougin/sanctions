@@ -1,9 +1,9 @@
 
 <header>
     <nav class="navbar navbar-expand-sm bg-secondary ">
-        <div class="container-fluid ">
+        <div class="container-fluid mx-5">
             <img class="d-none d-md-block" width="50px" height="50px" src="/assets/img/logo.png" alt="Logo pingouin du Lycée Gaudper">
-            <a class="navbar-brand ms-5 text-light" href="#">Lycée Gaudper</a>
+            <a class="navbar-brand ms-5 text-light" href="/">Lycée Gaudper</a>
             <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
