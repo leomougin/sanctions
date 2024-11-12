@@ -3,7 +3,7 @@
 namespace App\Controller;
 class MentionLegalesController
 {
-    // Méthode permettant de gérer la page d'accueil
+    // Méthode permettant de gérer la page des mentions légales
     public function mentionlegales() {
         // Fait appel au modèle afin de récupérer les données dans la BDD
 

@@ -1,6 +1,6 @@
 
-<footer class="bg-secondary d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
-    <div class="container text-center text-black ">
+<footer class="bg-secondary d-flex flex-wrap justify-content-between mt-5 align-items-center py-3 border-top">
+    <div class="container text-center text-white ">
         &copy; 2024 Lycée Gaudper - Gestion des Sanctions
     </div>
     <div id="reseau" class="container text-center ">
@@ -26,7 +26,7 @@
     <style>
         #reseau a, a {
             text-decoration: none;
-            color:black;
+            color:white;
         }
     </style>
 </footer>

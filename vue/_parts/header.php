@@ -14,23 +14,23 @@
                 <ul class="navbar-nav ">
                     <?php if (!empty($_SESSION)): ?>
                         <li class="nav-item">
-                            <a class="nav-link text-light" href="#"">Accueil</a>
+                            <a class="nav-link " href="/">Accueil</a>
                         </li>
                         <li class="nav-item ms-2">
-                            <a class="nav-link text-light " href="#">Ajouter une sanction</a>
+                            <a class="nav-link  " href="#">Ajouter une sanction</a>
                         </li>
-                        <a class="nav-link text-light" href="#">Sanctionner</a>
+                        <a class="nav-link " href="#">Sanctionner</a>
                         </li>
                         <li>
-                            <a class="nav-link text-light" href="#">Se déconnecter</a>
+                            <a class="nav-link " href="#">Se déconnecter</a>
                         </li>
                     <?php endif ?>
                     <?php if (empty($_SESSION)): ?>
                         <li class="nav-item ms-2">
-                            <a class="nav-link text-light btn btn-outline-danger " href="#">S'inscrire</a>
+                            <a class="nav-link btn btn-outline-danger text-white" href="?route=inscription">S'inscrire</a>
                         </li>
                         <li class="nav-item ms-2">
-                            <a class="nav-link text-light btn btn-outline-danger" href="#">Se connecter</a>
+                            <a class="nav-link  btn btn-outline-danger text-white" href="#">Se connecter</a>
                         </li>
                     <?php endif ?>
                 </ul>
@@ -39,6 +39,6 @@
     </nav>
 </header>
 
-<?php if (isset($_SESSION["utilisateur"])): ?>
-    <p class="fst-italic text-end me-5 mt-3">Vous êtes connecté en tant que <span class="text-danger">PSEUDO UTILISATEUR</span>!!</p>
-<?php endif ?>
+<?php //if (isset($_SESSION["utilisateur"])): ?>
+   <!-- <p class="fst-italic text-end me-5 mt-3">Vous êtes connecté en tant que <span class="text-danger">PSEUDO UTILISATEUR</span>!!</p>-->
+<?php //endif ?>

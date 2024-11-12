@@ -1,3 +1,10 @@
+<?php
+$inscriptionMessage='';
+if(isset($_SESSION['inscriptionMessage'])){
+    $inscriptionMessage=$_SESSION['inscriptionMessage'];
+    unset($_SESSION['inscriptionMessage']);
+}
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -17,9 +24,13 @@
 <div class="text-center info">
     <p>
         Afin de pouvoir utiliser les différentes fonctionnalités de notre portail informatique, il est nécéssaire
-        d'être <strong><a href="#">connecté</a></strong>. Si vous n'avez pas encore de compte vous avez la possiblité de vous <strong><a href="#">inscrire</a></strong>.
+        d'être <a class="fw-bold text-black" href="#">connecté</a>. Si vous n'avez pas encore de compte vous avez la possiblité de vous <a class="fw-bold text-black" href="#">inscrire</a>.
     </p>
 </div>
+
+<?php if(!empty($inscriptionMessage)):?>
+    <div class=" my-4 alert alert-success"><?=$inscriptionMessage?></div>
+<?php endif;?>
 
 <div class="container mt-5">
     <div class="text-center mb-5">
@@ -36,8 +47,8 @@
             élèves grâce à un suivi efficace et organisé.
         </p>
         <p>
-            Le <strong>Lycée Gaudper</strong> encourage
-            nos élèves et étudiants à adopter un comportement <strong>responsable</strong> et <strong>respectueux</strong>, afin de contribuer à un environnement
+            Le <span class="fw-bold">Lycée Gaudper</span> encourage
+            nos élèves et étudiants à adopter un comportement <span class="fw-bold">responsable</span> et <span class="fw-bold">respectueux</span>, afin de contribuer à un environnement
             scolaire sain pour tous.
         </p>
     </div>

@@ -10,7 +10,7 @@ class AccueilController
 
         // Fait appel à la vue afin de renvoyer la page
         require_once __DIR__ .'/../../vue/_parts/header.php';
-        require_once __DIR__ . '/../../vue/Vue_Accueil.php';
+        require_once __DIR__ .'/../../vue/Vue_Accueil.php';
         require_once __DIR__ .'/../../vue/_parts/footer.php';
 
 
