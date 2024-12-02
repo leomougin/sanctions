@@ -4,21 +4,25 @@ namespace App\Controller;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$route=$_GET['route'] ?? 'accueil';
+// Récupération des routes
+$route= require_once __DIR__ . '/../config/routes.php';
 
-switch ($route) {
-    default:
-    case 'accueil':
-        $accueilController = new AccueilController();
-        $accueilController->accueil();
-        break;
+// Récupération de l'URL
+$uri = parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
 
-    case 'mentionlegales':
-        $mentionLegalesController = new MentionLegalesController();
-        $mentionLegalesController->mentionLegales();
-        break;
-    case 'inscription':
-        $inscriptionController = new CreateAccountController();
-        $inscriptionController->inscription();
-        break;
+if (!isset($route[$uri])) {
+    $errorController = new ErrorController();
+    $errorController ->error404();
+    exit();
+}
+
+[$controllerName, $action]=$route[$uri];
+$controllerClass="App\\Controller\\{$controllerName}";
+try{
+    $controller=new $controllerClass();
+    $controller->$action();
+}catch (\Exception $e){
+    error_log($e->getMessage());
+    $errorController = new ErrorController();
+    $errorController->error404();
 }

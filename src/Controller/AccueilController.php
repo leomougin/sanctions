@@ -1,18 +1,19 @@
 <?php
 
 namespace App\Controller;
-class AccueilController
+
+use Doctrine\ORM;
+class AccueilController extends AbstractController
 {
 
     // Méthode permettant de gérer la page d'accueil
-    public function accueil() {
-        // Fait appel au modèle afin de récupérer les données dans la BDD
+    public function index():void
+    {
+        $this->render('home/accueil');
+    }
 
-        // Fait appel à la vue afin de renvoyer la page
-        require_once __DIR__ .'/../../vue/_parts/header.php';
-        require_once __DIR__ .'/../../vue/Vue_Accueil.php';
-        require_once __DIR__ .'/../../vue/_parts/footer.php';
-
-
+    public function mentionlegal():void
+    {
+        $this->render('home/mentionlegal');
     }
 }
