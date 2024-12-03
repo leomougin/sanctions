@@ -1,6 +1,6 @@
-<?php if(isset($_SESSION['success'])): ?>
+<?php if(isset($_SESSION['inscription_success'])): ?>
 <p class=" my-4 alert alert-success text-center">Vous avez bien créer votre compte!</p>
-<?php $_SESSION['success'] = null;
+<?php $_SESSION['inscription_success'] = null;
 endif;?>
 <div class="text-center ">
 

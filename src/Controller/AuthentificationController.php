@@ -3,19 +3,17 @@
 namespace App\Controller;
 
 use App\UserStory\CreateAccount;
-
+use Doctrine\ORM\EntityManager;
 
 
 class AuthentificationController extends AbstractController
 {
     private array $auths =[];
-    public function __construct()
+    private EntityManager $entityManager;
+    public function __construct(EntityManager $entityManager)
     {
+        $this->entityManager = $entityManager;
         session_start();
-        if (!isset($_SESSION['auths'])) {
-            $_SESSION['auths']=[];
-        }
-        $this->auths=&$_SESSION['auths'];
     }
 
     public function index():void
@@ -25,19 +23,19 @@ class AuthentificationController extends AbstractController
 
     public function inscription():void
     {
-        $entityManager=require_once __DIR__."/../../config/bootstrap.php";
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            print_r($_POST);
+            $prenom= $_POST['prenom'];
             $nom = $_POST['nom'];
-            $prenom = $_POST['prenom'];
             $email = $_POST['email'];
             $mdp =$_POST['mdp'];
             $mdpconf =$_POST['mdpconf'];
 
             try {
                 // Tenter de créer un compte
-                $user = new CreateAccount($entityManager);
-                $user->execute($nom,$prenom, $email, $mdp, $mdpconf);
-                $_SESSION['success']="1";
+                $user = new CreateAccount($this->entityManager);
+                $user->execute($prenom,$nom,$email, $mdp, $mdpconf);
+                $_SESSION['inscription_success']="1";
                 $this->redirect('/connexion');
             } catch (\Exception $e) {
                 $erreurs = $e->getMessage();

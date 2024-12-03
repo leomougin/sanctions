@@ -34,13 +34,6 @@ class CreateAccount
             throw new \Exception("L'adresse email n'est pas valide");
         }
 
-        // Vérifier si le mot de passe est sécurisé
-        // Si tel n'est pas le cas alors, lancer une exception
-        // Juste la vérification de la longueur du MDP >= 8
-//        if(strlen($password)<8){
-//            throw New \Exception("Le mot de passe doit faire au moins 8 caractères.");
-//        }
-
         // Vérifier l'unicité de l'email
         // Si tel n'est pas le cas alors, lancer une exception
         if ($AccountRepository->findOneBy(['email'=>$email])) {
