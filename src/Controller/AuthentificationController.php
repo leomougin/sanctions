@@ -26,7 +26,6 @@ class AuthentificationController extends AbstractController
     public function inscription():void
     {
         $entityManager=require_once __DIR__."/../../config/bootstrap.php";
-        $erreurs="";
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
@@ -38,13 +37,13 @@ class AuthentificationController extends AbstractController
                 // Tenter de créer un compte
                 $user = new CreateAccount($entityManager);
                 $user->execute($nom,$prenom, $email, $mdp, $mdpconf);
+                $_SESSION['success']="1";
                 $this->redirect('/connexion');
             } catch (\Exception $e) {
                 $erreurs = $e->getMessage();
             }
-
         }
-        $this->render('auths/inscription',['erreurs'=>$erreurs]);
+        $this->render('auths/inscription',['erreurs'=>$erreurs ?? null,]);
     }
     public function connexion(): void {
         $this->render('auths/connexion');

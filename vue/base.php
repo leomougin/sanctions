@@ -22,28 +22,28 @@
 
             <div class="collapse navbar-collapse me-auto mb-2 mb-md-0 justify-content-end " id="navbarSupportedContent">
                 <ul class="navbar-nav ">
-                    <?php if (!empty($_SESSION)): ?>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/">Accueil</a>
+                    <?php if (!empty($_SESSION["id_user"])): ?>
+                        <li class="nav-item ms-2">
+                            <a class="nav-link text-white " href="/">Accueil</a>
                         </li>
                         <li class="nav-item ms-2">
-                            <a class="nav-link  text-white" href="#">Ajouter une sanction</a>
+                            <a class="nav-link  text-white " href="#">Ajouter une sanction</a>
                         </li>
-                        <a class="nav-link text-white" href="#">Sanctionner</a>
+                        <a class="nav-link text-white " href="#">Sanctionner</a>
                         </li>
-                        <li>
-                            <a class="nav-link btn btn-outline-danger text-white" href="#">Se déconnecter</a>
+                        <li class="nav-item ms-2">
+                            <a class="nav-link btn btn-outline-danger text-white " href="#">Se déconnecter</a>
                         </li>
                     <?php endif ?>
-                    <?php if (empty($_SESSION)): ?>
-                        <li class="nav-item">
-                            <a class="nav-link text-white" href="/">Accueil</a>
+                    <?php if (empty($_SESSION["id_user"])): ?>
+                        <li class="nav-item ms-2">
+                            <a class="nav-link text-white " href="/">Accueil</a>
                         </li>
                         <li class="nav-item ms-2">
-                            <a class="nav-link btn btn-outline-danger text-white" href="/inscription">S'inscrire</a>
+                            <a class="nav-link   text-white" href="/inscription">S'inscrire</a>
                         </li>
                         <li class="nav-item ms-2">
-                            <a class="nav-link  btn btn-outline-danger text-white" href="/connexion">Se connecter</a>
+                            <a class="nav-link   text-white" href="/connexion">Se connecter</a>
                         </li>
                     <?php endif ?>
                 </ul>
@@ -51,14 +51,26 @@
         </div>
     </nav>
 </header>
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .content {
+        flex: 1;
+    }
+</style>
 
 <?php //if (isset($_SESSION["utilisateur"])): ?>
 <!-- <p class="fst-italic text-end me-5 mt-3">Vous êtes connecté en tant que <span class="text-danger">PSEUDO UTILISATEUR</span>!!</p>-->
 <?php //endif ?>
+<div class="container content">
+    <?=$content?>
+</div>
 
-<?=$content?>
-
-<footer class="bg-secondary d-flex flex-wrap justify-content-between mt-5 align-items-center py-3 border-top">
+<footer class="bg-secondary d-flex flex-wrap justify-content-between mt-5 align-items-center py-3 border-top ">
     <div class="container text-center text-white ">
         &copy; 2024 Lycée Gaudper - Gestion des Sanctions
     </div>
@@ -90,4 +102,5 @@
     </style>
 </footer>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </html>

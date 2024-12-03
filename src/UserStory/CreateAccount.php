@@ -37,9 +37,9 @@ class CreateAccount
         // Vérifier si le mot de passe est sécurisé
         // Si tel n'est pas le cas alors, lancer une exception
         // Juste la vérification de la longueur du MDP >= 8
-        if(strlen($password)<8){
-            throw New \Exception("Le mot de passe doit faire au moins 8 caractères.");
-        }
+//        if(strlen($password)<8){
+//            throw New \Exception("Le mot de passe doit faire au moins 8 caractères.");
+//        }
 
         // Vérifier l'unicité de l'email
         // Si tel n'est pas le cas alors, lancer une exception
@@ -51,6 +51,11 @@ class CreateAccount
         // Si tel n'est pas le cas alors, lancer une exception
         if ($password != $passwordconf){
             throw new \Exception("Veuillez saisir le même mot de passe !");
+        }
+
+        if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',$password))
+        {
+            throw new \Exception("Le mot de passe doit contenir au moins 8 caractères incluant une majuscule, une minuscule, et un chiffre!");
         }
 
         // Insérer les données dans la base de donnée

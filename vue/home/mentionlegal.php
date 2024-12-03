@@ -66,7 +66,7 @@
             <ul>
                 <ol><h3>7. Contact</h3></ol>
                 <p>Pour toute question, réclamation, ou suggestion concernant le site, vous pouvez nous
-                    <a class=" fw-bold "href="mailto:contact@lyceegaudper.com">contacter</a>içi.</p>
+                    <a class=" fw-bold text-black "href="mailto:contact@lyceegaudper.com">contacter</a> içi.</p>
             </ul>
         </ul>
     </div>
