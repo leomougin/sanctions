@@ -1,3 +1,8 @@
+<?php
+if(session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!doctype html>
 <html lang=fr>
 <head>
@@ -22,7 +27,8 @@
 
             <div class="collapse navbar-collapse me-auto mb-2 mb-md-0 justify-content-end " id="navbarSupportedContent">
                 <ul class="navbar-nav ">
-                    <?php if (!empty($_SESSION["id_user"])): ?>
+                    <?php if (!empty($_SESSION["utilisateur"]["prenom"])): ?>
+
                         <li class="nav-item ms-2">
                             <a class="nav-link text-white " href="/">Accueil</a>
                         </li>
@@ -35,7 +41,7 @@
                             <a class="nav-link btn btn-outline-danger text-white " href="#">Se déconnecter</a>
                         </li>
                     <?php endif ?>
-                    <?php if (empty($_SESSION["id_user"])): ?>
+                    <?php if (empty($_SESSION["utilisateur"]["prenom"])): ?>
                         <li class="nav-item ms-2">
                             <a class="nav-link text-white " href="/">Accueil</a>
                         </li>
@@ -63,9 +69,10 @@
     }
 </style>
 
-<?php //if (isset($_SESSION["utilisateur"])): ?>
-<!-- <p class="fst-italic text-end me-5 mt-3">Vous êtes connecté en tant que <span class="text-danger">PSEUDO UTILISATEUR</span>!!</p>-->
-<?php //endif ?>
+<?php if (!empty($_SESSION["utilisateur"]["prenom"])): ?>
+<p class="fst-italic text-end m-4 text-black">Vous êtes connecté en tant que <span class="fw-bold"><?=$_SESSION["utilisateur"]["prenom"]?></span>!!</p>
+<?php endif ?>
+
 <div class="container content">
     <?=$content?>
 </div>

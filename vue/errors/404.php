@@ -7,7 +7,7 @@ Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
         <div class="space-x-4">
             <a href="/" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors duration-200">
                 Retour à l'accueil
-</a>
+            </a>
         </div>
     </div>
 </div>
