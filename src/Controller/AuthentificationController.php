@@ -9,7 +9,6 @@ use Doctrine\ORM\EntityManager;
 
 class AuthentificationController extends AbstractController
 {
-    private array $auths =[];
     private EntityManager $entityManager;
     public function __construct(EntityManager $entityManager)
     {
@@ -17,10 +16,6 @@ class AuthentificationController extends AbstractController
         session_start();
     }
 
-    public function index():void
-    {
-        $this->render('auths/index',['auths'=>$this->auths]);
-    }
 
     public function inscription():void
     {

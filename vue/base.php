@@ -33,12 +33,15 @@ if(session_status() === PHP_SESSION_NONE) {
                             <a class="nav-link text-white " href="/">Accueil</a>
                         </li>
                         <li class="nav-item ms-2">
+                            <a class="nav-link  text-white " href="/ajouterpromotion">Ajouter une promotion</a>
+                        </li>
+                        <li class="nav-item ms-2">
                             <a class="nav-link  text-white " href="#">Ajouter une sanction</a>
                         </li>
                         <a class="nav-link text-white " href="#">Sanctionner</a>
                         </li>
                         <li class="nav-item ms-2">
-                            <a class="nav-link btn btn-outline-danger text-white " href="/deconnexion">Se déconnecter</a>
+                            <a class="nav-link btn btn-outline-dark text-white " href="/deconnexion">Se déconnecter</a>
                         </li>
                     <?php endif ?>
                     <?php if (empty($_SESSION["utilisateur"]["prenom"])): ?>
@@ -46,10 +49,10 @@ if(session_status() === PHP_SESSION_NONE) {
                             <a class="nav-link text-white " href="/">Accueil</a>
                         </li>
                         <li class="nav-item ms-2">
-                            <a class="nav-link   text-white" href="/inscription">S'inscrire</a>
+                            <a class="nav-link btn btn-outline-dark text-white" href="/inscription">S'inscrire</a>
                         </li>
                         <li class="nav-item ms-2">
-                            <a class="nav-link   text-white" href="/connexion">Se connecter</a>
+                            <a class="nav-link btn btn-outline-dark text-white" href="/connexion">Se connecter</a>
                         </li>
                     <?php endif ?>
                 </ul>

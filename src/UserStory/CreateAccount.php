@@ -2,8 +2,8 @@
 
 namespace App\UserStory;
 
-use Doctrine\ORM\EntityManager;
 use App\Entity\User;
+use Doctrine\ORM\EntityManager;
 
 class CreateAccount
 {
