@@ -1,9 +1,11 @@
 <?php
+session_start();
 $inscriptionMessage='';
 if(isset($_SESSION['inscriptionMessage'])){
     $inscriptionMessage=$_SESSION['inscriptionMessage'];
     unset($_SESSION['inscriptionMessage']);
 }
+
 ?>
 
 <style>
@@ -13,13 +15,14 @@ if(isset($_SESSION['inscriptionMessage'])){
 </style>
 
 <!-- Cette partie ne dois s'afficher seulement quand l'utilisateur est déconnecté -->
+<?php if(empty($_SESSION['utilisateur']['email'])): ?>
     <div class="text-center info">
         <p>
             Afin de pouvoir utiliser les différentes fonctionnalités de notre portail informatique, il est nécéssaire
             d'être <a class="fw-bold text-black" href="/connexion">connecté</a>. Si vous n'avez pas encore de compte vous avez la possiblité de vous <a class="fw-bold text-black" href="/inscription">inscrire</a>.
         </p>
     </div>
-
+<?php endif;?>
 
 <?php if(!empty($inscriptionMessage)):?>
     <div class=" my-4 alert alert-success"><?=$inscriptionMessage?></div>

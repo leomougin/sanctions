@@ -34,7 +34,7 @@ class AuthentificationController extends AbstractController
             try {
                 // Tenter de créer un compte
                 $user = new CreateAccount($this->entityManager);
-                $user->execute($nom,$prenom,$email, $mdp, $mdpconf);
+                $user->execute($prenom,$nom,$email, $mdp, $mdpconf);
                 $_SESSION['inscription_success']="1";
                 $this->redirect('/connexion');
             } catch (\Exception $e) {
@@ -82,5 +82,6 @@ class AuthentificationController extends AbstractController
 
             $this->redirect('/error');
         }
+        $this->render('auths/deconnexion');
     }
 }

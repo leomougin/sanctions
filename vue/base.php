@@ -38,7 +38,7 @@ if(session_status() === PHP_SESSION_NONE) {
                         <a class="nav-link text-white " href="#">Sanctionner</a>
                         </li>
                         <li class="nav-item ms-2">
-                            <a class="nav-link btn btn-outline-danger text-white " href="#">Se déconnecter</a>
+                            <a class="nav-link btn btn-outline-danger text-white " href="/deconnexion">Se déconnecter</a>
                         </li>
                     <?php endif ?>
                     <?php if (empty($_SESSION["utilisateur"]["prenom"])): ?>

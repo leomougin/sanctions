@@ -3,5 +3,7 @@ return [
     '/' => ['AccueilController', 'index'],
     '/inscription' => ['AuthentificationController', 'inscription'],
     '/connexion' => ['AuthentificationController', 'connexion'],
-    '/mentionlegal' => ['AccueilController', 'mentionlegal']
+    '/deconnexion' => ['AuthentificationController', 'deconnexion'],
+    '/mentionlegal' => ['AccueilController', 'mentionlegal'],
+    '/ajouter-promotion' => ['ClasseController', 'ajout-promotion']
 ];

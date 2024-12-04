@@ -1,4 +1,7 @@
-<?php if(isset($_SESSION['inscription_success'])): ?>
+<?php if(!empty($_SESSION['utilisateur']['email'])) {
+    $this->redirect('/error');
+}
+if(isset($_SESSION['inscription_success'])): ?>
 <p class=" my-4 alert alert-success text-center">Vous avez bien créer votre compte!</p>
 <?php $_SESSION['inscription_success'] = null;
 endif;?>

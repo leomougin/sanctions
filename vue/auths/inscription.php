@@ -1,3 +1,8 @@
+<?php
+if(!empty($_SESSION['utilisateur']['email'])) {
+    $this->redirect('/error');
+}
+?>
 <div class="text-center ">
 
     <h2 class="my-5"> S'inscrire </h2>
