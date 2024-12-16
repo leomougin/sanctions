@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\UserStory\CreateAccount;
 use App\UserStory\Login;
+use Doctrine\DBAL\Exception\ConnectionException;
 use Doctrine\ORM\EntityManager;
 
 
@@ -32,6 +33,8 @@ class AuthentificationController extends AbstractController
                 $user->execute($prenom,$nom,$email, $mdp, $mdpconf);
                 $_SESSION['inscription_success']="1";
                 $this->redirect('/connexion');
+            } catch (ConnectionException $e) {
+                $erreurs = "Le serveur de base de données est actuellement indisponible. Veuillez réessayer plus tard.";
             } catch (\Exception $e) {
                 $erreurs = $e->getMessage();
             }
@@ -43,26 +46,23 @@ class AuthentificationController extends AbstractController
         if(session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-//        if(!isset($_SESSION['prenom'])) {
-//            $this->redirect('/error');
-//        }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST')
         {
             $email= $_POST['email'];
             $mdp = $_POST['mdp'];
-
             try{
                 $user = new Login($this->entityManager);
                 $user->execute($email, $mdp);
                 $_SESSION['connexion_success']="1";
                 $this->redirect('/');
+            } catch (ConnectionException $e) {
+                $erreurs = "Le serveur de base de données est actuellement indisponible. Veuillez réessayer plus tard.";
             }catch(\Exception $e )
             {
                 $erreurs = $e->getMessage();
             }
         }
-
         $this->render('auths/connexion',['erreurs'=>$erreurs ?? null,]);
     }
 

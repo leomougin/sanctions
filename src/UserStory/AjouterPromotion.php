@@ -17,17 +17,21 @@ class AjouterPromotion
         // L'entityManager est injecté par dépendance
         $this->entityManager = $entityManager;
     }
-    public function execute (string $nom, int $annee):Promotion
+    public function execute (string $nom, $annee):Promotion
     {
-        //$AccountRepository = $this->entityManager->getRepository(Promotion::class);
+        $AccountRepository = $this->entityManager->getRepository(Promotion::class);
 
         if(empty($nom)|| empty($annee)){
             throw new \Exception("Tout les champs sont obligatoires!");
         }
 
-        if (!preg_match('/^(?=.*\d)/',$annee))
+        if (!preg_match('/^(?=.*\d)/',$annee)||strlen($annee)!=4)
         {
             throw new \Exception("Veuillez indiquer une année valide!");
+        }
+
+        if ($AccountRepository->findOneBy(['nom'=>$nom]) && $AccountRepository->findOneBy(['annee'=>$annee])){
+            throw new \Exception("Cette promotion a déjà été créée !");
         }
 
         $promotion = new Promotion();

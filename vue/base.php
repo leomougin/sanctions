@@ -36,10 +36,10 @@ if(session_status() === PHP_SESSION_NONE) {
                             <a class="nav-link  text-white " href="/ajouterpromotion">Ajouter une promotion</a>
                         </li>
                         <li class="nav-item ms-2">
+                            <a class="nav-link  text-white " href="/ajoutereleve">Ajouter des élèves</a>
+                        </li>
+                        <li class="nav-item ms-2">
                             <a class="nav-link  text-white " href="#">Ajouter une sanction</a>
-                        </li>
-                        <a class="nav-link text-white " href="#">Sanctionner</a>
-                        </li>
                         <li class="nav-item ms-2">
                             <a class="nav-link btn btn-outline-dark text-white " href="/deconnexion">Se déconnecter</a>
                         </li>

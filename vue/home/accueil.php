@@ -24,10 +24,6 @@ if(isset($_SESSION['inscriptionMessage'])){
     </div>
 <?php endif;?>
 
-<?php if(!empty($inscriptionMessage)):?>
-    <div class=" my-4 alert alert-success"><?=$inscriptionMessage?></div>
-<?php endif;?>
-
 <div class="container mt-5">
     <div class="text-center mb-5">
         <h1>

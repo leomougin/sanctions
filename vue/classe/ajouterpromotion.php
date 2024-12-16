@@ -1,19 +1,21 @@
-<?php //if(empty($_SESSION['utilisateur']['email'])) {
-//    $this->redirect('/error');
-//}
-//?>
+<?php if(empty($_SESSION['utilisateur']['email'])) {
+    $_SESSION["non_connecte"]=1;
+    $this->redirect('/connexion');
+}
+?>
 <div class="text-center ">
 
     <h2 class="my-5"> Ajouter une promotion </h2>
     <div class=" w-50 mx-auto shadow p-5 bg-secondary text-white rounded-5 ">
-        <?php if(isset($erreur)):?>
-            <p class=" my-4 alert alert-danger"><?=$erreur?></p>
+        <?php if(isset($erreurs)):?>
+            <p class=" my-4 alert alert-danger"><?=$erreurs?></p>
         <?php endif;?>
         <form  action="" method="post" novalidate>
             <div class="mb-3">
                 <label for="promotion" class="form-label">Promotion *</label>
                 <input type="text"
                        class="form-control "
+                       list="classe"
                        id="promotion" name="promotion" value="" placeholder="BTS SIO 2">
             </div>
             <div class="mb-3">

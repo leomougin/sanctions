@@ -5,5 +5,6 @@ return [
     '/connexion' => ['AuthentificationController', 'connexion'],
     '/deconnexion' => ['AuthentificationController', 'deconnexion'],
     '/mentionlegal' => ['AccueilController', 'mentionlegal'],
-    '/ajouterpromotion' => ['ClasseController', 'ajouterpromotion']
+    '/ajouterpromotion' => ['ClasseController', 'ajouterpromotion'],
+    '/ajoutereleve' => ['ClasseController', 'ajoutereleve']
 ];
