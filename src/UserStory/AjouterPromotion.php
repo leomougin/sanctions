@@ -43,4 +43,5 @@ class AjouterPromotion
 
         return $promotion;
     }
+
 }

@@ -3,17 +3,18 @@
 namespace App\Controller;
 
 use App\Entity\Eleve;
+use App\Entity\Promotion;
 use App\UserStory\AjouterPromotion;
 use App\UserStory\AjouterEleve;
 use Doctrine\DBAL\Exception\ConnectionException;
 use Doctrine\ORM\EntityManager;
-use League\Csv\Exception;
-use League\Csv\InvalidArgument;
-use League\Csv\UnavailableStream;
+
+use League\Csv\Reader;
 
 class ClasseController extends AbstractController
 {
     private EntityManager $entityManager;
+
     public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
@@ -42,22 +43,26 @@ class ClasseController extends AbstractController
 
     public function ajoutereleve():void
     {
-
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $csv=$_FILES['fichier']['tmp_name'];
+            $classe = $_POST['classe'];
             try {
                 $eleve = new AjouterEleve($this->entityManager);
-                //$eleve->execute($_FILES['fichier']['tmp_name'], $_POST["promotions"]); ==> bonne manière de faire ?
-                $this->redirect('/');
+                $eleve->execute($csv,$classe);
             } catch (ConnectionException $e) {
                 $erreurs = "Le serveur de base de données est actuellement indisponible. Veuillez réessayer plus tard.";
             } catch (\Exception $e) {
                 $erreurs = $e->getMessage();
             }
         }
+
+        $promotions = $this->entityManager->getRepository(Promotion::class)
+            ->findBy([]);
+
         $this->render('classe/ajoutereleve',
             [
                 'erreurs'=>$erreurs ?? null,
-                // 'promotion'=>$import->getPromotion() ==> bonne idée pour l'utilisé sur d'autre page
+                'promotions'=>$promotions ?? null
                 ]);
     }
 }

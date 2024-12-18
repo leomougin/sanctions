@@ -2,8 +2,6 @@
 
 namespace App\UserStory;
 
-
-namespace App\UserStory;
 use App\Entity\Eleve;
 use App\Entity\Promotion;
 use App\Entity\User;
@@ -24,21 +22,17 @@ class AjouterEleve
         $this->entityManager = $entityManager;
     }
 
-    public function execute($fichierCsv, $idPromotion)
+    public function execute($fichierCSV,$idPromotion)
     {
         $repositoryPromotion = $this->entityManager->getRepository(Promotion::class);
 
-        if(empty($fichierCsv) || empty($idPromotion)){
+        if(empty($fichierCSV) || empty($idPromotion)){
             throw new Exception("Tous les champs sont obligatoires!");
         }
-
-        if (!$repositoryPromotion->findOneBy(['id'=>$idPromotion])){
+        if (!$repositoryPromotion->findOneBy([$idPromotion])){
             throw new \Exception("La promotion sélectionnée n'a pas été trouvée !");
         }
-
-
-
-        $csv= Reader::createFromPath($fichierCsv);
+        $csv = Reader::createFromPath($fichierCSV,'r');
         $csv ->setHeaderOffset(0);
         $csv->setEscape('');
         $res= iterator_to_array($csv);
@@ -46,17 +40,12 @@ class AjouterEleve
             $eleve = new Eleve();
             $eleve->setNom($etudiant["Nom"]);
             $eleve->setPrenom($etudiant["Prénom"]);
-            $eleve->setIdPromotion($repositoryPromotion->findOneBy(['id'=>$idPromotion]));
+            $eleve->setIdPromotion($idPromotion);
             $this->entityManager->persist($eleve);
             $this->entityManager->flush();
         }
         return "Les étudiants ont bien étés créés !";
+    }
 
-    }
-    public function getPromotion()
-    {
-        $repository =  $this->entityManager->getRepository(Promotion::class);
-        return $repository->findAll();
-    }
 
 }

@@ -16,6 +16,7 @@ class Promotion
     private string $nom;
     #[ORM\Column(name:'annee_promotion', type:'integer',length:4)]
     private string $annee;
+    private $entityManager;
 
 
     public function getId(): int
@@ -47,4 +48,5 @@ class Promotion
     {
         $this->annee = $annee;
     }
+
 }

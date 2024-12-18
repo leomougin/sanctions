@@ -10,26 +10,21 @@
         <?php if(isset($erreurs)):?>
             <p class=" my-4 alert alert-danger"><?=$erreurs?></p>
         <?php endif;?>
-        <form  action="" method="post" novalidate>
+        <form  action="" method="post" enctype="multipart/form-data" novalidate>
             <div class="mb-3">
-                <label for="csv-eleve" class="form-label">Élève *</label>
+                <label for="fichier" class="form-label">Élève *</label>
                 <input type="file"
-                       accept=".csv"
                         class="form-control"
-                        id="csv-elve" name="csv-eleve">
+                        id="fichier" name="fichier">
 
             </div>
             <div class="mb-3">
                 <label for="classe" class="form-label">Classe *</label>
-                <select class="form-control"id="classe">
+                <select class="form-control"id="classe" name="classe">
                     <option selected>Choisissez une classe</option>
-                    <?php
-                    foreach ($promotions as $promotion):
-
-                        echo "<option value=" .$promotion->getId(). ">".$promotion->getLibelle()." - ".$promotion->getAnnee()."</option>";
-
-                    endforeach;
-                    ?>
+                    <?php foreach ($promotions as $promotion):
+                        echo "<option value=" .$promotion->getId(). ">".$promotion->getNom()." - ".$promotion->getAnnee()."</option>";
+                    endforeach;?>
                 </select>
             </div>
             <button type="submit" class="btn btn-outline-dark text-white">Valider</button>
